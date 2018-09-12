@@ -8,11 +8,6 @@ import (
 	"strings"
 )
 
-type Point struct {
-	x int
-	y int
-}
-
 func main() {
 	rdr := NewReader(10000)
 	H, W, D := ScanInt(), ScanInt(), ScanInt()
