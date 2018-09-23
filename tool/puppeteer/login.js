@@ -1,7 +1,5 @@
 "use strict";
 
-const path = require("path");
-const fs = require("fs");
 const puppeteer = require("puppeteer");
 const cookie = require("./cookie");
 

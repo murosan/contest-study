@@ -14,8 +14,8 @@ const selector = '.lang-ja span[class="btn-sample-copy"]';
   const browser = await puppeteer.launch(settings);
   const page = await browser.newPage();
 
-  for (const cookie of cookies) {
-    await page.setCookie(cookie);
+  for (const c of cookies) {
+    await page.setCookie(c);
   }
 
   const getCases = async url => {

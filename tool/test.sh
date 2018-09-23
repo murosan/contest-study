@@ -5,8 +5,12 @@ usage_exit() {
   exit 1
 }
 
-fail_exit() {
+del() {
   rm "./main"
+}
+
+fail_exit() {
+  del
   exit 1
 }
 
@@ -42,6 +46,7 @@ for i in $( seq 0 $(($len - 1)) ); do
   if [[ $out != $output ]]; then
     failed=1
     echo "Fail!"
+    echo "input: $input"
     echo "------------------- expected -------------------"
     echo $output
     echo "-------------------- actual --------------------"
@@ -52,5 +57,5 @@ for i in $( seq 0 $(($len - 1)) ); do
 done
 
 cat $cpp_file | pbcopy
-rm ./main
+del
 echo -e "Success!!\nCopied to clipboard"
