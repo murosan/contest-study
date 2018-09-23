@@ -7,7 +7,6 @@ const cookie = require("./cookie");
 const config = require("../config.json");
 const url = config.beginner.base + config.beginner.a; // TODO: 動的に
 const btnSelector = "#outer-inner > p > .btn > .lang > .lang-ja";
-const langSelector = "select[class=submit-language-selector]";
 const codeSelector = "textarea[name=source_code]";
 const submitSelector = "button[type=submit]";
 
@@ -25,10 +24,6 @@ const settings = { headless: false, slowMo: 20 };
   await page.goto(url);
   await page.waitForSelector(btnSelector);
   await page.click(btnSelector);
-
-  await page.waitForSelector(langSelector);
-  await page.click(langSelector);
-  await page.select(langSelector, "3005"); // C++14 (Clang 3.8.0)
 
   await page.focus(codeSelector);
   await page.type(codeSelector, clipboardy.readSync());
