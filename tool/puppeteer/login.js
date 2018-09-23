@@ -3,11 +3,11 @@
 const path = require("path");
 const fs = require("fs");
 const puppeteer = require("puppeteer");
+const cookie = require("./cookie");
 
 const config = require("../config.json");
 const loginURL = config.loginURL;
 const settings = { headless: false, slowMo: 20 };
-const cookieFile = path.resolve(__dirname, "../cookies/atcoder.json");
 
 (async () => {
   const browser = await puppeteer.launch(settings);
@@ -26,7 +26,7 @@ const cookieFile = path.resolve(__dirname, "../cookies/atcoder.json");
     waitUntil: "domcontentloaded"
   });
 
-  const cookie = await page.cookies();
-  fs.writeFileSync(cookieFile, JSON.stringify(cookie));
+  const cookies = await page.cookies();
+  cookie.save(cookies);
   await browser.close();
 })();

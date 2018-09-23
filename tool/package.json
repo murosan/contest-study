@@ -6,6 +6,7 @@
   "author": "murosan",
   "license": "ISC LICENSE",
   "dependencies": {
+    "clipboardy": "^1.2.3",
     "puppeteer": "^1.8.0"
   },
   "devDependencies": {
