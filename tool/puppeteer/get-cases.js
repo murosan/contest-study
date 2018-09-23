@@ -43,10 +43,10 @@ const selector = '.lang-ja span[class="btn-sample-copy"]';
     });
   };
 
-  caseRepo.save("b_a", await getCases(config.beginner.a));
-  caseRepo.save("b_b", await getCases(config.beginner.b));
-  caseRepo.save("b_c", await getCases(config.beginner.c));
-  caseRepo.save("b_d", await getCases(config.beginner.d));
+  caseRepo.save("b_a", await getCases(config.base + config.beginner.a));
+  caseRepo.save("b_b", await getCases(config.base + config.beginner.b));
+  caseRepo.save("b_c", await getCases(config.base + config.beginner.c));
+  caseRepo.save("b_d", await getCases(config.base + config.beginner.d));
 
   await browser.close();
 })();
