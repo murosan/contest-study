@@ -5,7 +5,7 @@ const fs = require("fs");
 const puppeteer = require("puppeteer");
 
 const config = require("../config.json");
-const loginURL = "https://practice.contest.atcoder.jp/login";
+const loginURL = config.loginURL;
 const settings = { headless: false, slowMo: 20 };
 const cookieFile = path.resolve(__dirname, "../cookies/atcoder.json");
 
