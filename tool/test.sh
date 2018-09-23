@@ -52,4 +52,5 @@ for i in $( seq 0 $(($len - 1)) ); do
 done
 
 cat $cpp_file | pbcopy
+rm ./main
 echo -e "Success!!\nCopied to clipboard"
