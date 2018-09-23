@@ -8,6 +8,7 @@ const caseRepo = require("./cases");
 
 const config = require("../config.json");
 const settings = { headless: false, slowMo: 20 };
+const selector = '.lang-ja span[class="btn-sample-copy"]';
 
 (async () => {
   const browser = await puppeteer.launch(settings);
@@ -20,17 +21,16 @@ const settings = { headless: false, slowMo: 20 };
   const getCases = async url => {
     console.log("access to: " + url);
     await page.goto(url);
-    await page.waitFor(3000);
+    await page.waitForSelector(selector);
     const cookies = await page.cookies();
     cookie.save(cookies);
 
-    const selector = '.lang-ja span[class="btn-sample-copy"]';
     const btns = await page.$$(selector);
     const inputs = [];
     const outputs = [];
     for (let i = 0; i < btns.length; i++) {
       await btns[i].click();
-      const data = clipboardy.readSync().replace(/\n$/, "") + "\n";
+      const data = clipboardy.readSync().replace(/\n$/, "");
       if (i % 2 === 0) {
         inputs.push(data);
       } else {
