@@ -1,0 +1,21 @@
+{
+  "name": "tool",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/murosan/contest-study",
+  "author": "murosan",
+  "license": "ISC LICENSE",
+  "dependencies": {
+    "puppeteer": "^1.8.0"
+  },
+  "devDependencies": {
+    "husky": "^1.0.0-rc.14",
+    "prettier": "1.14.3",
+    "pretty-quick": "^1.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
