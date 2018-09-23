@@ -1,1 +1,4 @@
 /node_modules
+/cookies/*
+!/cookies/.gitkeep
+/config.json
