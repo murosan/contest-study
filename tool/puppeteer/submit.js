@@ -5,7 +5,11 @@ const clipboardy = require("clipboardy");
 const cookie = require("./cookie");
 
 const config = require("../config.json");
-const url = config.beginner.base + config.beginner.a; // TODO: 動的に
+const q = config.beginner[process.argv[2]];
+if (!q) {
+  throw new Error("argv is empty.");
+}
+const url = config.beginner.base + q;
 const btnSelector = "#outer-inner > p > .btn > .lang > .lang-ja";
 const codeSelector = "textarea[name=source_code]";
 const submitSelector = "button[type=submit]";
