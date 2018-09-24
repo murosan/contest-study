@@ -40,17 +40,16 @@ for i in $( seq 0 $(($len - 1)) ); do
   kv=$(echo $json | jq .[$i])
   input=$(echo $kv | jq .in | sed "s/\"//g")
   output=$(echo $kv | jq .out | sed "s/\"//g")
+  output=$(echo -e "$output") # convert new lines
 
   # testing
-  out=$(./main <<< $input)
+  out="$(./main <<< $input)"
   if [[ $out != $output ]]; then
-    failed=1
-    echo "Fail!"
-    echo "input: $input"
+    echo -e "Fail!\ninput: $input"
     echo "------------------- expected -------------------"
-    echo $output
+    echo -e "$output"
     echo "-------------------- actual --------------------"
-    echo $out
+    echo -e "$out"
     echo "------------------------------------------------"
     fail_exit
   fi
