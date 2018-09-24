@@ -14,7 +14,7 @@ const btnSelector = "#outer-inner > p > .btn > .lang > .lang-ja";
 const codeSelector = "textarea[name=source_code]";
 const submitSelector = "button[type=submit]";
 
-const settings = { headless: false, slowMo: 20 };
+const settings = { headless: false };
 
 (async () => {
   const browser = await puppeteer.launch(settings);
@@ -32,12 +32,15 @@ const settings = { headless: false, slowMo: 20 };
   await page.focus(codeSelector);
   await page.type(codeSelector, clipboardy.readSync());
 
-  const btn = await page.$(submitSelector);
-  await btn.click();
-  await page.waitForNavigation({
-    timeout: 60000,
-    waitUntil: "domcontentloaded"
-  });
+  const accept = await page.evaluate(() => confirm("submit?"));
+  if (accept) {
+    const btn = await page.$(submitSelector);
+    await btn.click();
+    await page.waitForNavigation({
+      timeout: 60000,
+      waitUntil: "domcontentloaded"
+    });
+  }
 
   await browser.close();
 })();
