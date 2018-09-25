@@ -29,6 +29,7 @@ const settings = { headless: false };
   await page.waitForSelector(btnSelector);
   await page.click(btnSelector);
 
+  await page.waitForSelector(codeSelector);
   await page.focus(codeSelector);
   await page.type(codeSelector, clipboardy.readSync());
 
