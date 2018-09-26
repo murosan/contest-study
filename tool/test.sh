@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage_exit() {
-  echo "Usage: $0 [-f] filename" 1>&2
+  echo "Usage: $0 -f (b_a|b_b|b_c|b_d)" 1>&2
   exit 1
 }
 
