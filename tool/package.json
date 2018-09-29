@@ -5,6 +5,18 @@
   "repository": "https://github.com/murosan/contest-study",
   "author": "murosan",
   "license": "ISC LICENSE",
+  "scripts": {
+    "login": "node ./puppeteer/login.js",
+    "test:a": "./test.sh -f b_a",
+    "test:b": "./test.sh -f b_b",
+    "test:c": "./test.sh -f b_c",
+    "test:d": "./test.sh -f b_d",
+    "cases": "node ./puppeteer/cases.js",
+    "submit:a": " node ./puppeteer/submit.js a",
+    "submit:b": " node ./puppeteer/submit.js b",
+    "submit:c": " node ./puppeteer/submit.js c",
+    "submit:d": " node ./puppeteer/submit.js d"
+  },
   "dependencies": {
     "clipboardy": "^1.2.3",
     "puppeteer": "^1.8.0"
