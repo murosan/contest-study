@@ -31,7 +31,7 @@ if [[ $file = "" ]]; then
 fi
 
 cpp_file="$HOME/CLionProjects/contest/main.cpp"
-g++ -std=c++1y -o main $cpp_file
+g++ -o main $cpp_file
 
 json=$(cat "./cases/$file.json")
 len=$(echo $json | jq length)
@@ -43,7 +43,7 @@ for i in $( seq 0 $(($len - 1)) ); do
   output=$(echo -e "$output") # convert new lines
 
   # testing
-  out="$(./main <<< $input)"
+  out="$(echo -e $input | ./main)"
   if [[ $out != $output ]]; then
     echo -e "Fail!\ninput: $input"
     echo "------------------- expected -------------------"
