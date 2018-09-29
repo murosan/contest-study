@@ -41,6 +41,7 @@ const settings = { headless: false };
       timeout: 60000,
       waitUntil: "domcontentloaded"
     });
+    return;
   }
 
   await browser.close();
